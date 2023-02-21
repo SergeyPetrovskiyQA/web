@@ -1,19 +1,17 @@
 package ru.netology.web;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 class ChromeTest {
 
-    WebDriver driver;
+    private WebDriver driver;
 
     @BeforeAll
     static void setupAll() {
-        WebDriverManager.chromedriver().setup();
+        System.setProperty("webdriver.chrome.driver", "C:\\Users\\888\\Desktop\\selenium\\driver\\chromedriver.exe");
     }
 
     @BeforeEach
@@ -24,6 +22,7 @@ class ChromeTest {
     @AfterEach
     void teardown() {
         driver.quit();
+        driver = null;
     }
 
     @Test
@@ -39,7 +38,7 @@ class ChromeTest {
     }
 
     @Test
-    void shouldTestV2(){
+    void shouldTestV2() {
         driver.get("http://localhost:9999");
         driver.findElement(By.cssSelector("[data-test-id=\"name\"] input")).sendKeys("Сазазонов-Петров Сергей");
         driver.findElement(By.cssSelector("[data-test-id=\"phone\"] input")).sendKeys("+79001231212");
