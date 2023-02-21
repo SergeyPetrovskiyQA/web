@@ -1,5 +1,7 @@
 package ru.netology.web;
 
+
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -7,11 +9,11 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 class ChromeTest {
 
-    private WebDriver driver;
+    WebDriver driver;
 
     @BeforeAll
     static void setupAll() {
-        System.setProperty("webdriver.chrome.driver", "C:\\Users\\888\\Desktop\\selenium\\driver\\chromedriver.exe");
+        WebDriverManager.chromedriver().setup();
     }
 
     @BeforeEach
@@ -22,7 +24,6 @@ class ChromeTest {
     @AfterEach
     void teardown() {
         driver.quit();
-        driver = null;
     }
 
     @Test
